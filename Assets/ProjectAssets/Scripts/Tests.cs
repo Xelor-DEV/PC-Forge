@@ -4,6 +4,7 @@ public class Tests : MonoBehaviour
 {
     public GameObject menu; // Referencia al objeto menu
     public GameObject toGenerate; // Referencia al objeto que se generará
+    public GameObject toGenerate2; // Referencia al objeto que se generará
     public GameObject spawnPoint; // Referencia al punto de spawn
     public GameObject player; // Referencia al jugador
 
@@ -51,6 +52,14 @@ public class Tests : MonoBehaviour
         if (toGenerate != null && spawnPoint != null)
         {
             Instantiate(toGenerate, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        }
+    }
+
+    public void GenerateObject2()
+    {
+        if (toGenerate != null && spawnPoint != null)
+        {
+            Instantiate(toGenerate2, spawnPoint.transform.position, spawnPoint.transform.rotation);
         }
     }
 }

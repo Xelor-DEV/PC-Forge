@@ -1,27 +1,30 @@
+using Oculus.Interaction;
+using Oculus.Interaction.HandGrab; // Asegúrate de incluir este namespace
 using UnityEngine;
 
-public class Test34 : MonoBehaviour
+public class GrabStateDetector : MonoBehaviour
 {
-    private bool isCollidingWithPlayer = false;
+    [SerializeField] private GrabInteractable _grabInteractable;
+    [SerializeField] private HandGrabInteractable _handGrabInteractable;
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        // Verifica si el objeto con el que colisionó es el "Player"
-        if (other.gameObject.tag == "Player")
+        if (_grabInteractable.State == InteractableState.Select)
         {
-            isCollidingWithPlayer = true;
-            Debug.Log("entro");
-
+            Debug.Log("Está agarrado");
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // Cuando el "Player" deja de colisionar, desactiva la bandera
-        if (other.gameObject.tag == "Player")
+        else
         {
-            isCollidingWithPlayer = false;
-            Debug.Log("salio");
+            Debug.Log("No está agarrado");
+        }
+        // Verificar el estado del HandGrabInteractable
+        if (_handGrabInteractable.State == InteractableState.Select)
+        {
+            Debug.Log("Objeto agarrado con HandGrab");
+        }
+        else
+        {
+            Debug.Log("Objeto no agarrado");
         }
     }
 }
