@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GrabStateDetector : MonoBehaviour
 {
+    /*
     [SerializeField] private GrabInteractable _grabInteractable;
     [SerializeField] private HandGrabInteractable _handGrabInteractable;
 
@@ -27,4 +28,5 @@ public class GrabStateDetector : MonoBehaviour
             Debug.Log("Objeto no agarrado");
         }
     }
+    */
 }

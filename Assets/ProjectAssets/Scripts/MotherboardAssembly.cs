@@ -43,7 +43,16 @@ public class MotherboardAssembly : MonoBehaviour
 
     private void AttachGPU(GameObject gpu)
     {
-        gpu.transform.parent = this.transform;
+        // Guardar la escala y rotación original de la GPU
+        Vector3 originalScale = gpu.transform.localScale;
+        Quaternion originalRotation = gpu.transform.rotation;
+
+        // Hacer que la GPU sea hija de la motherboard
+        gpu.transform.SetParent(transform);
+
+        // Restaurar la escala y rotación original
+        gpu.transform.localScale = originalScale;
+        gpu.transform.rotation = originalRotation;
         GPU tmp = gpu.GetComponent<GPU>();
         tmp.DeactivateComponents();
     }

@@ -5,16 +5,24 @@ public class PCIeSlotPart : MonoBehaviour
     public string requiredTag; // Asignar "GPUSmall" o "GPULarge" en el Inspector
     public MotherboardAssembly motherboardAssembly;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag(requiredTag))
+        if (collision.gameObject.CompareTag(requiredTag))
         {
-            // Obtener el objeto raíz de la GPU (ajusta según tu jerarquía)
-            GameObject gpu = other.transform.parent.gameObject;
+            GameObject gpu = collision.gameObject;
             motherboardAssembly.ReportCollision(this, gpu);
         }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(requiredTag))
+        {
+            GameObject gpu = collision.transform.parent.gameObject;
+            motherboardAssembly.ReportCollisionEnd(this, gpu);
+        }
+    }
+    /*
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(requiredTag))
@@ -23,4 +31,5 @@ public class PCIeSlotPart : MonoBehaviour
             motherboardAssembly.ReportCollisionEnd(this, gpu);
         }
     }
+    */
 }

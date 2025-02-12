@@ -276,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.07936479
+      value: 0.423
       objectReference: {fileID: 0}
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
@@ -427,3 +427,7 @@ MonoBehaviour:
   _compGrabbable: {fileID: 8581200882560644808}
   _grabInteractable: {fileID: 4344152111978051314}
   _handGrabInteractable: {fileID: 154729967915542402}
+  correctForward: {x: 0, y: 0, z: -1}
+  correctUp: {x: 0, y: 1, z: 0}
+  localPositionOffset: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
