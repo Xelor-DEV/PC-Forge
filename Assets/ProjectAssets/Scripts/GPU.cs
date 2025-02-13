@@ -30,6 +30,7 @@ public class GPU : MonoBehaviour
         {
             _compBoxCollider.enabled = false;
         }
+        
 
         if (_compRigidbody != null)
         {
@@ -46,7 +47,5 @@ public class GPU : MonoBehaviour
             _compRigidbody.velocity = Vector3.zero;
             _compRigidbody.angularVelocity = Vector3.zero;
         }
-
-
     }
 }
