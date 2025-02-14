@@ -40,7 +40,7 @@ public class MotherboardAssembly : MonoBehaviour
             AttachGPU(currentGPU);
         }
     }
-
+    /*
     private void AttachGPU(GameObject gpu)
     {
         // Guardar la escala y rotaci?n original de la GPU
@@ -55,5 +55,23 @@ public class MotherboardAssembly : MonoBehaviour
         gpu.transform.rotation = originalRotation;
         GPU tmp = gpu.GetComponent<GPU>();
         tmp.DeactivateComponents();
+    }
+    */
+
+    private void AttachGPU(GameObject gpu)
+    {
+        GPU gpuComponent = gpu.GetComponent<GPU>();
+        if (gpuComponent != null)
+        {
+            // Aplicar posición y rotación correcta
+            gpuComponent.SnapToCorrectPosition(transform);
+
+            // Desactivar componentes
+            gpuComponent.DeactivateComponents();
+        }
+        else
+        {
+            Debug.LogError("Componente GPU no encontrado en el objeto adjuntado");
+        }
     }
 }

@@ -9,6 +9,19 @@ public class GPU : MonoBehaviour
     public GrabInteractable _grabInteractable;
     public HandGrabInteractable _handGrabInteractable;
 
+    [Header("Attachment Settings")]
+    public Vector3 correctPosition; // Posición relativa a la motherboard
+    public Vector3 correctRotation; // Rotación en ángulos de Euler
+
+    public void SnapToCorrectPosition(Transform motherboard)
+    {
+        // Configurar transformación relativa
+        transform.SetParent(motherboard);
+        transform.localPosition = correctPosition;
+        transform.localRotation = Quaternion.Euler(correctRotation);
+    }
+
+
     public void DeactivateComponents()
     {
         if (_compGrabbable != null)
