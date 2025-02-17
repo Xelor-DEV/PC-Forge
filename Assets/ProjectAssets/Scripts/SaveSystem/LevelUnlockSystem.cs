@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Save System/Level Unlock System")]
 public class LevelUnlockSystem : ScriptableObject
 {
-    private int currentUnlockedLevels = 1;
+    [SerializeField] private int currentUnlockedLevels = 1;
 
     public int CurrentUnlockedLevels
     {

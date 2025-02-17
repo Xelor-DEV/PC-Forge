@@ -56,8 +56,11 @@ public static class SaveSystem
             {
                 Debug.LogError($"Error deleting save: {e.Message}");
             }
-        }
-            
+        }          
+    }
+    public static string GetSavePath()
+    {
+        return savePath;
     }
 }
 

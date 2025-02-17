@@ -20,6 +20,7 @@ public class SceneLoader : MonoBehaviour
         else
         {
             Instance = this;
+            //DontDestroyOnLoad(gameObject);
         }
     }
 

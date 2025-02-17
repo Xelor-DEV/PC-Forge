@@ -7,6 +7,13 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private LevelUnlockSystem unlockSystem;
     private LevelProgress _currentProgress;
 
+    public LevelUnlockSystem UnlockSystem
+    {
+        get
+        {
+            return unlockSystem;
+        }
+    }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -16,7 +23,7 @@ public class SaveManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             LoadGame();
         }
     }
@@ -42,5 +49,10 @@ public class SaveManager : MonoBehaviour
     {
         SaveSystem.DeleteSave();
         LoadGame();
+    }
+
+    public void UnlockLevel(int level)
+    {
+        SaveManager.Instance.UnlockSystem.UnlockLevel(level);
     }
 }
