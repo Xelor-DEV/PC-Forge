@@ -22,9 +22,4 @@ public class MainMenuUI : MonoBehaviour
             levelButtons[i].interactable = unlockSystem.IsLevelUnlocked(levelIndex);
         }
     }
-
-    public void LoadLevel(string levelName)
-    {
-        SceneLoader.Instance.LoadScene(levelName);
-    }
 }

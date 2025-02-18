@@ -5,22 +5,24 @@ using System.Collections;
 
 public class SceneLoader : MonoBehaviour
 {
-    public static SceneLoader Instance { get; private set; }
-
     [Header("Fade Settings")]
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 1f;
+    [SerializeField] private float blackScreenDuration = 0.5f; 
+
+    private static bool shouldFadeIn = false;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (shouldFadeIn)
         {
-            Destroy(this.gameObject);
+            fadeImage.color = Color.black;
+            StartCoroutine(FadeIn());
+            shouldFadeIn = false;
         }
         else
         {
-            Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            fadeImage.color = new Color(0, 0, 0, 0);
         }
     }
 
@@ -32,8 +34,9 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator LoadSceneWithFade(string sceneName)
     {
         yield return StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(blackScreenDuration); 
+        shouldFadeIn = true;
         SceneManager.LoadScene(sceneName);
-        yield return StartCoroutine(FadeIn());
     }
 
     private IEnumerator FadeOut()
