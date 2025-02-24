@@ -2728,7 +2728,7 @@ MonoBehaviour:
   m_text: "Si usas <b><color=#000000>Hand Tracking</color></b>, la teletransportaci\xF3n
     se activa con un gesto:\n\n<b><color=#000000>1. Haz el gesto de una pistola con
     la mano derecha.</color></b>\n<b><color=#000000>2. Gira la mano  </color></b>hasta
-    que tu dedo pulgar apunte hacia la izquierda.\n<b><color=#000000>3. Apunta con
+    que tu dedo pulgar apunte hacia la derecha.\n<b><color=#000000>3. Apunta con
     tu dedo \xEDndice hacia arriba.</color></b>\n<b><color=#000000>4. </color></b>Aparecer\xE1
     el rayo parab\xF3lico (<b><color=#000000>blanco</color></b> si es v\xE1lido,
     <b><color=#000000>rosado</color></b> si no lo es).\n<b><color=#000000>5. Para
@@ -4238,6 +4238,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dfaf02989357934a86505d88509ce87, type: 3}
+--- !u!1 &1777089645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777089647}
+  - component: {fileID: 1777089646}
+  m_Layer: 0
+  m_Name: TutorialSceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1777089646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777089645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ad6dee429e70940911697c4306b050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: MenuPrincipal
+  sceneLoader: {fileID: 1191361334}
+--- !u!4 &1777089647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777089645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4980041, y: 0.92935264, z: 0.05386998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777420638
 GameObject:
   m_ObjectHideFlags: 0
@@ -5927,3 +5973,4 @@ SceneRoots:
   - {fileID: 201314214}
   - {fileID: 296069657}
   - {fileID: 272532025}
+  - {fileID: 1777089647}
