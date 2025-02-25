@@ -5,6 +5,11 @@ public class MotherboardAssembly : MonoBehaviour
     public PCIeSlotPart smallSlot;
     public PCIeSlotPart largeSlot;
 
+    [Header("Latches")]
+    [SerializeField] private LatchController pcieLatch;
+    [SerializeField] private LatchController leftDIIMLatch;
+    [SerializeField] private LatchController RightDIIMLatch;
+
     private GameObject currentGPU;
     private bool smallColliding;
     private bool largeColliding;
@@ -35,28 +40,13 @@ public class MotherboardAssembly : MonoBehaviour
 
     private void CheckAssembly()
     {
-        if (smallColliding && largeColliding && currentGPU != null)
+        if (pcieLatch.IsLatchOpen && smallColliding && largeColliding && currentGPU != null)
         {
             AttachGPU(currentGPU);
+            pcieLatch.CloseLatch(); // Cierra el latch al colocar la GPU
         }
     }
-    /*
-    private void AttachGPU(GameObject gpu)
-    {
-        // Guardar la escala y rotaci?n original de la GPU
-        Vector3 originalScale = gpu.transform.localScale;
-        Quaternion originalRotation = gpu.transform.rotation;
 
-        // Hacer que la GPU sea hija de la motherboard
-        gpu.transform.SetParent(transform);
-
-        // Restaurar la escala y rotaci?n original
-        gpu.transform.localScale = originalScale;
-        gpu.transform.rotation = originalRotation;
-        GPU tmp = gpu.GetComponent<GPU>();
-        tmp.DeactivateComponents();
-    }
-    */
 
     private void AttachGPU(GameObject gpu)
     {

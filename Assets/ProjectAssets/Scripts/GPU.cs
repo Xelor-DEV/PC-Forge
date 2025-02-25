@@ -21,6 +21,13 @@ public class GPU : MonoBehaviour
         transform.localRotation = Quaternion.Euler(correctRotation);
     }
 
+    [ContextMenu("Set Correct Position And Rotation")]
+    public void SetCorrectPositionAndRotation()
+    {
+        correctPosition = transform.transform.localPosition;
+        correctRotation = transform.transform.localRotation.eulerAngles;
+    }
+
 
     public void DeactivateComponents()
     {
