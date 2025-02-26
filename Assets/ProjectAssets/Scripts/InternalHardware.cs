@@ -1,17 +1,17 @@
 using UnityEngine;
 using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
-public class GPU : MonoBehaviour
+public class InternalHardware : MonoBehaviour
 {
-    public Rigidbody _compRigidbody;
-    public BoxCollider _compBoxCollider;
-    public Grabbable _compGrabbable;
-    public GrabInteractable _grabInteractable;
-    public HandGrabInteractable _handGrabInteractable;
+    [SerializeField] private Rigidbody _compRigidbody;
+    [SerializeField] private BoxCollider _compBoxCollider;
+    [SerializeField] private Grabbable _compGrabbable;
+    [SerializeField] private GrabInteractable _grabInteractable;
+    [SerializeField] private HandGrabInteractable _handGrabInteractable;
 
     [Header("Attachment Settings")]
-    public Vector3 correctPosition; // Posición relativa a la motherboard
-    public Vector3 correctRotation; // Rotación en ángulos de Euler
+    [SerializeField] private Vector3 correctPosition; // Posición relativa a la motherboard
+    [SerializeField] private Vector3 correctRotation; // Rotación en ángulos de Euler
 
     public void SnapToCorrectPosition(Transform motherboard)
     {

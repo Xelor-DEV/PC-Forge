@@ -6,9 +6,11 @@ using UnityEngine.Events;
 public class LatchController : MonoBehaviour
 {
     public enum RotationSpace { Local, World }
+    public enum RotationAxis { X, Y, Z } // Nuevo enum para selección de eje
 
     [Header("Latch Configuration")]
     [SerializeField] RotationSpace rotationSpace = RotationSpace.Local;
+    [SerializeField] RotationAxis rotationAxis = RotationAxis.Z; // Nuevo campo para eje
     [SerializeField] float minAngle = 0f;
     [SerializeField] float maxAngle = 360f;
     [SerializeField] float targetAngle = 90f;
@@ -42,13 +44,13 @@ public class LatchController : MonoBehaviour
 
     private void UpdateRotation()
     {
+        // Obtener ángulo actual según eje seleccionado
         currentAngle = rotationSpace == RotationSpace.Local ?
-            transform.localEulerAngles.z :
-            transform.eulerAngles.z;
+            GetLocalRotationAxis() :
+            GetWorldRotationAxis();
 
         float clampedAngle = Mathf.Repeat(currentAngle, 360f);
 
-        // Forzar rotación a targetAngle cuando está cerca
         if (Mathf.Abs(clampedAngle - targetAngle) < angleThreshold && !isOpen)
         {
             SetRotation(targetAngle);
@@ -64,6 +66,16 @@ public class LatchController : MonoBehaviour
 
             SetRotation(nearestLimit);
         }
+    }
+
+    private float GetLocalRotationAxis()
+    {
+        return transform.localEulerAngles[(int)rotationAxis];
+    }
+
+    private float GetWorldRotationAxis()
+    {
+        return transform.eulerAngles[(int)rotationAxis];
     }
 
     private void CheckTargetAngle()
@@ -104,7 +116,8 @@ public class LatchController : MonoBehaviour
             transform.localEulerAngles :
             transform.eulerAngles;
 
-        newRotation.z = angle;
+        // Aplicar al eje seleccionado
+        newRotation[(int)rotationAxis] = angle;
 
         if (rotationSpace == RotationSpace.Local)
             transform.localEulerAngles = newRotation;
