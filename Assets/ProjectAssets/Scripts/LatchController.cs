@@ -2,6 +2,7 @@ using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class LatchController : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class LatchController : MonoBehaviour
     [SerializeField] float closedAngle = 0f;
     [SerializeField] float angleThreshold = 1f;
 
+    [Header("Closing Animation")]
+    [SerializeField] float closeDuration = 0.5f;
+    [SerializeField] AnimationCurve closeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
     [Header("Events")]
     public UnityEvent OnLatchOpened;
     public UnityEvent OnLatchClosed;
@@ -30,13 +35,14 @@ public class LatchController : MonoBehaviour
     private float currentAngle;
     private bool isLocked = false;
     private bool isOpen = false;
+    private Coroutine closeCoroutine;
 
     public bool IsLatchOpen => isOpen;
     public bool IsLocked => isLocked;
 
     void Update()
     {
-        if (isLocked) return;
+        if (isLocked || closeCoroutine != null) return;
 
         UpdateRotation();
         CheckTargetAngle();
@@ -104,10 +110,41 @@ public class LatchController : MonoBehaviour
 
     public void CloseLatch()
     {
-        SetRotation(closedAngle);
+        if (closeCoroutine != null)
+            StopCoroutine(closeCoroutine);
+
+        closeCoroutine = StartCoroutine(SmoothClose());
+    }
+
+    private IEnumerator SmoothClose()
+    {
         LockLatch();
         DeactivateComponents();
+
+        float startAngle = GetCurrentAngle();
+        float targetClosedAngle = closedAngle;
+        float time = 0;
+
+        while (time < closeDuration)
+        {
+            time += Time.deltaTime;
+            float t = closeCurve.Evaluate(time / closeDuration);
+            float angle = Mathf.LerpAngle(startAngle, targetClosedAngle, t);
+
+            SetRotation(angle);
+            yield return null;
+        }
+
+        SetRotation(targetClosedAngle);
         OnLatchClosed.Invoke();
+        closeCoroutine = null;
+    }
+
+    private float GetCurrentAngle()
+    {
+        return rotationSpace == RotationSpace.Local ?
+            GetLocalRotationAxis() :
+            GetWorldRotationAxis();
     }
 
     private void SetRotation(float angle)
