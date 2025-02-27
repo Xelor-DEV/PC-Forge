@@ -9,12 +9,6 @@ public class MenuFollower : MonoBehaviour
 
     void Start()
     {
-        // Desactivar el menú al inicio
-        if (menu != null)
-        {
-            menu.SetActive(false);
-        }
-
         // Calcular la distancia inicial entre el menú y el jugador (solo en X y Z)
         if (menu != null && player != null)
         {

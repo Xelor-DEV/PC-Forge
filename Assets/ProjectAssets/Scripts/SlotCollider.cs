@@ -34,7 +34,6 @@ public class SlotCollider : MonoBehaviour
     protected virtual void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
-        slotIndex = transform.GetSiblingIndex();
     }
 
     protected virtual void OnTriggerEnter(Collider other)

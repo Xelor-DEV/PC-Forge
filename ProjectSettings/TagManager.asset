@@ -8,6 +8,8 @@ TagManager:
   - GPUSmall
   - RAMSmall
   - RAMLarge
+  - CPUSmall
+  - CPULarge
   layers:
   - Default
   - TransparentFX
