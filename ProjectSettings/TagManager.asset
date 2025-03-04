@@ -10,6 +10,7 @@ TagManager:
   - RAMLarge
   - CPUSmall
   - CPULarge
+  - ThermalPaste
   layers:
   - Default
   - TransparentFX
