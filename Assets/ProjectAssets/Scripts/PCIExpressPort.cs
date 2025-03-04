@@ -4,6 +4,7 @@ public class PCIExpressPort : InternalSlot
 {
     protected override void CheckAssembly()
     {
+        if (isSlotOccupied) return;
         if (ValidateLatches() == true && AllSlotsOccupied() == true)
         {
             AttachComponent(currentComponent);
@@ -16,6 +17,7 @@ public class PCIExpressPort : InternalSlot
         InternalHardware gpu = component.GetComponent<InternalHardware>();
         if (gpu != null)
         {
+            isSlotOccupied = true;
             gpu.SnapToCorrectPosition(transform);
             gpu.DeactivateComponents();
             OnComponentAttached.Invoke();

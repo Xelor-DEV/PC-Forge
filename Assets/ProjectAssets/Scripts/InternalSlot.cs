@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public abstract class InternalSlot : MonoBehaviour
 {
     [Header("Base Port Configuration")]
-    [SerializeField] protected SlotCollider[] slots;
+    [SerializeField] protected SlotCollider[] colliders;
     [SerializeField] protected LatchController[] latches;
     [SerializeField] protected float alignmentThreshold = 0.9f;
 
@@ -13,18 +13,20 @@ public abstract class InternalSlot : MonoBehaviour
 
     protected GameObject currentComponent;
     protected bool[] slotsOccupied;
+    protected bool isSlotOccupied = false;
 
     protected virtual void Start()
     {
-        slotsOccupied = new bool[slots.Length];
-        for(int i = 0; i < slots.Length; ++i)
+        slotsOccupied = new bool[colliders.Length];
+        for(int i = 0; i < colliders.Length; ++i)
         {
-            slots[i].SlotIndex = i;
+            colliders[i].SlotIndex = i;
         }
     }
 
     public virtual void ReportCollision(int slotIndex, GameObject component)
     {
+        if (isSlotOccupied) return;
         slotsOccupied[slotIndex] = true;
         currentComponent = component;
         CheckAssembly();
@@ -32,6 +34,7 @@ public abstract class InternalSlot : MonoBehaviour
 
     public virtual void ReportCollisionEnd(int slotIndex, GameObject component)
     {
+        if (isSlotOccupied) return;
         slotsOccupied[slotIndex] = false;
         if (AllSlotsEmpty() == true)
         {

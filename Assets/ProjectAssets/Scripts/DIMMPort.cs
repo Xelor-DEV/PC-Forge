@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DIMMPort : InternalSlot
 {
     protected override void CheckAssembly()
     {
+        if (isSlotOccupied) return;
         if (ValidateLatches() == true && AllSlotsOccupied() == true)
         {
             AttachComponent(currentComponent);
@@ -18,9 +17,10 @@ public class DIMMPort : InternalSlot
         InternalHardware ram = component.GetComponent<InternalHardware>();
         if (ram != null)
         {
+            isSlotOccupied = true;
             ram.SnapToCorrectPosition(transform);
             ram.DeactivateComponents();
-            OnComponentAttached.Invoke();
+            OnComponentAttached?.Invoke();
         }
     }
 

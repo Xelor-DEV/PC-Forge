@@ -35,7 +35,7 @@ public class ThermalPaste : MonoBehaviour
 
         _currentScale = Mathf.Clamp(_currentScale + amount, 0f, 1f);
         SetScale(_currentScale);
-        OnPasteApplied.Invoke();
+        OnPasteApplied?.Invoke();
     }
 
     private void SetScale(float normalizedValue)

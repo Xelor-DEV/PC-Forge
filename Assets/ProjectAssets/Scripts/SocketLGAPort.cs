@@ -45,12 +45,13 @@ public class SocketLGAPort : InternalSlot
         {
             isSocketOpen = true;
             PlayAnimation("OnOpenSocket", true);
-            OnSocketOpened.Invoke();
+            OnSocketOpened?.Invoke();
         }
     }
 
     protected override void CheckAssembly()
     {
+        if (isSlotOccupied) return;
         if (isSocketOpen == true && AllSlotsOccupied() == true)
         {
             AttachComponent(currentComponent);
@@ -75,10 +76,11 @@ public class SocketLGAPort : InternalSlot
         InternalHardware cpu = component.GetComponent<InternalHardware>();
         if (cpu != null)
         {
+            isSlotOccupied = true;
             cpu.SnapToCorrectPosition(transform);
             cpu.DeactivateComponents();
             componentInstalled = true;
-            OnComponentAttached.Invoke();
+            OnComponentAttached?.Invoke();
         }
     }
 
@@ -86,7 +88,7 @@ public class SocketLGAPort : InternalSlot
     {
         isSocketOpen = false;
         PlayAnimation("OnClosedSocket",true);
-        OnSocketClosed.Invoke();
+        OnSocketClosed?.Invoke();
     }
 
     private void PlayAnimation(string animationName, bool state)

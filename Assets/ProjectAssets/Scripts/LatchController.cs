@@ -100,7 +100,7 @@ public class LatchController : MonoBehaviour
         SetRotation(targetAngle);
         LockLatch();
         DeactivateComponents();
-        OnLatchOpened.Invoke();
+        OnLatchOpened?.Invoke();
     }
 
     public void LockLatch()

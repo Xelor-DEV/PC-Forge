@@ -1,8 +1,11 @@
 using UnityEngine;
 using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
+using UnityEngine.Events;
+
 public class InternalHardware : MonoBehaviour
 {
+    [Header("Components to Deactivate")]
     [SerializeField] private Rigidbody _compRigidbody;
     [SerializeField] private BoxCollider _compBoxCollider;
     [SerializeField] private Grabbable _compGrabbable;
@@ -12,6 +15,9 @@ public class InternalHardware : MonoBehaviour
     [Header("Attachment Settings")]
     [SerializeField] private Vector3 correctPosition; // Posición relativa a la motherboard
     [SerializeField] private Vector3 correctRotation; // Rotación en ángulos de Euler
+
+    [Header("Events")]
+    public UnityEvent OnComponentInstalled; // El evento público
 
     public void SnapToCorrectPosition(Transform motherboard)
     {
@@ -67,5 +73,6 @@ public class InternalHardware : MonoBehaviour
             _compRigidbody.velocity = Vector3.zero;
             _compRigidbody.angularVelocity = Vector3.zero;
         }
+        OnComponentInstalled?.Invoke();
     }
 }
