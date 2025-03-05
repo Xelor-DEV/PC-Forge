@@ -11,6 +11,9 @@ TagManager:
   - CPUSmall
   - CPULarge
   - ThermalPaste
+  - Motherboard
+  - CoolerSmall
+  - CoolerLarge
   layers:
   - Default
   - TransparentFX

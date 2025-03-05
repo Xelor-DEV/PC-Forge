@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 7479245944253515331}
   m_Layer: 6
   m_Name: MotherboardPlaceholder
-  m_TagString: Untagged
+  m_TagString: Motherboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,8 +677,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.52616805, y: 0.005861819, z: 0.63909566}
-  m_Center: {x: 0.0144583285, y: 0.038362414, z: 0.030002475}
+  m_Size: {x: 0.52616805, y: 0.019472063, z: 0.63909566}
+  m_Center: {x: 0.0144583285, y: 0.03155729, z: 0.030002475}
 --- !u!54 &3300143671973036142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71a56fc37dbccc46806f19208c1cfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
+  colliders:
   - {fileID: 446017903567931967}
   - {fileID: 8418848794572550697}
   latches:
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4cfaf6bc8b99043a059789777d40a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
+  colliders:
   - {fileID: 7259248716641591219}
   - {fileID: 1564383260238595230}
   latches: []
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7960c8ef8ceb9574e94a2f91e1ece3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
+  colliders:
   - {fileID: 4694623883633818710}
   - {fileID: 8872086530011190891}
   latches:
@@ -1942,8 +1942,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.045648172, y: 0.013122163, z: 0.14385782}
-  m_Center: {x: -0.053669624, y: -0.0040008617, z: -0.070101745}
+  m_Size: {x: 0.045648172, y: 0.0242339, z: 0.14385782}
+  m_Center: {x: -0.053669624, y: -0.009556729, z: -0.070101745}
 --- !u!114 &4337692073830513800
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,9 +12,11 @@ public class ThermalPaste : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent OnPasteApplied = new UnityEvent();
+    public UnityEvent OnPasteFilled = new UnityEvent();
 
     private Vector3 _initialScale;
     private bool _isActive = false;
+    private bool _filledTriggered = false;
 
     private void Start()
     {
@@ -36,6 +38,11 @@ public class ThermalPaste : MonoBehaviour
         _currentScale = Mathf.Clamp(_currentScale + amount, 0f, 1f);
         SetScale(_currentScale);
         OnPasteApplied?.Invoke();
+        if (_currentScale == _scaleLimits.y)
+        {
+            OnPasteFilled?.Invoke();
+            _filledTriggered = true;
+        }
     }
 
     private void SetScale(float normalizedValue)

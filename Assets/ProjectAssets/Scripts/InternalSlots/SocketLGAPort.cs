@@ -10,6 +10,9 @@ public class SocketLGAPort : InternalSlot
     public UnityEvent OnSocketOpened;
     public UnityEvent OnSocketClosed;
 
+    [Header("CPU Events")]
+    public UnityEvent<GameObject> OnCPUAttached = new UnityEvent<GameObject>();
+
     [Header("External References")]
     [SerializeField] private GameObject triggerContainer; // Objeto con el collider
     [SerializeField] private BoxCollider triggerCollider;
@@ -81,6 +84,7 @@ public class SocketLGAPort : InternalSlot
             cpu.DeactivateComponents();
             componentInstalled = true;
             OnComponentAttached?.Invoke();
+            OnCPUAttached?.Invoke(cpu.gameObject);
         }
     }
 
