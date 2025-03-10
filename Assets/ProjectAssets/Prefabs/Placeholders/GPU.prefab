@@ -266,32 +266,32 @@ PrefabInstance:
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 5.5393815
       objectReference: {fileID: 0}
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 5.5393815
       objectReference: {fileID: 0}
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 5.5393815
       objectReference: {fileID: 0}
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.291
+      value: 1.3410999
       objectReference: {fileID: 0}
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7223
+      value: 1.1725999
       objectReference: {fileID: 0}
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5149
+      value: 3.3648868
       objectReference: {fileID: 0}
     - target: {fileID: 6095360572279074108, guid: cb0f7ac8800c35e4a90c4f3402f330cd,
         type: 3}
@@ -405,6 +405,9 @@ MonoBehaviour:
   _handGrabInteractable: {fileID: 4994602235345384103}
   correctPosition: {x: 0.1017352, y: -0.07280004, z: -0.06478482}
   correctRotation: {x: 0, y: 180, z: 0}
+  OnComponentInstalled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4994602235345384103 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6703704048449612450, guid: cb0f7ac8800c35e4a90c4f3402f330cd,

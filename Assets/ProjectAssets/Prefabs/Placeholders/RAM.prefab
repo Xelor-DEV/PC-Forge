@@ -137,15 +137,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5751403944342351621}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: -0.382, y: 1.5658, z: 0.47697026}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.55393815, y: 0.55393815, z: 0.55393815}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4019988161494814024}
   - {fileID: 9001589840383145441}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
 --- !u!33 &2161623396138140667
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -171,8 +171,11 @@ MonoBehaviour:
   _compGrabbable: {fileID: 5290790995990737673}
   _grabInteractable: {fileID: 8862032624669401941}
   _handGrabInteractable: {fileID: 4523191031947056310}
-  correctPosition: {x: -0.12611915, y: -0.004123807, z: 0.16502976}
+  correctPosition: {x: -0.1261192, y: -0.004123807, z: 0.1650298}
   correctRotation: {x: -0, y: 0, z: 0}
+  OnComponentInstalled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!23 &3040629372418494955
 MeshRenderer:
   m_ObjectHideFlags: 0
