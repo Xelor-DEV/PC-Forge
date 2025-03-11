@@ -14,6 +14,14 @@ TagManager:
   - Motherboard
   - CoolerSmall
   - CoolerLarge
+  - OldGPUSmall
+  - OldGPULarge
+  - OldRAMSmall
+  - OldRAMLarge
+  - OldCPUSmall
+  - OldCPULarge
+  - OldCoolerSmall
+  - OldCoolerLarge
   layers:
   - Default
   - TransparentFX

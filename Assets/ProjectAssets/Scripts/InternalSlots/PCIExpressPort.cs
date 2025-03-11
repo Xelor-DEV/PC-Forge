@@ -30,7 +30,17 @@ public class PCIExpressPort : InternalSlot
 
     protected override bool ValidateLatches()
     {
-        return latches[0].IsLatchOpen; // Solo necesita un latch
+        if (latches != null)
+        {
+            for (int i = 0; i < latches.Length; ++i)
+            {
+                if (latches[i].IsLatchOpen == false)
+                {
+                    return false;
+                }
+            }
+        }
+        return true; // Requiere todos los latches abiertos
     }
 
     private bool AllSlotsOccupied()

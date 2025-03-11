@@ -12,8 +12,6 @@ public class LatchController : MonoBehaviour
     [Header("Latch Configuration")]
     [SerializeField] RotationSpace rotationSpace = RotationSpace.Local;
     [SerializeField] RotationAxis rotationAxis = RotationAxis.Z; // Nuevo campo para eje
-    [SerializeField] float minAngle = 0f;
-    [SerializeField] float maxAngle = 360f;
     [SerializeField] float targetAngle = 90f;
     [SerializeField] float closedAngle = 0f;
     [SerializeField] float angleThreshold = 1f;
@@ -55,23 +53,7 @@ public class LatchController : MonoBehaviour
             GetLocalRotationAxis() :
             GetWorldRotationAxis();
 
-        float clampedAngle = Mathf.Repeat(currentAngle, 360f);
-
-        if (Mathf.Abs(clampedAngle - targetAngle) < angleThreshold && !isOpen)
-        {
-            SetRotation(targetAngle);
-            HandleLatchOpened();
-            return;
-        }
-
-        if (clampedAngle < minAngle || clampedAngle > maxAngle)
-        {
-            float nearestLimit = (Mathf.Abs(clampedAngle - minAngle) < Mathf.Abs(clampedAngle - maxAngle)) ?
-                minAngle :
-                maxAngle;
-
-            SetRotation(nearestLimit);
-        }
+        // Eliminada la lógica de ajuste automático al mínimo/máximo
     }
 
     private float GetLocalRotationAxis()

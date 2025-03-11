@@ -518,7 +518,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Para interactuar con botones y opciones del men\xFA:\n\n . <b><color=#000000>Con
-    controles</color></b>: Apunta con el rayo l\xE1ser y presiona el <b><color=#000000>Trigger</color></b>.\n\n
+    controles</color></b>: Apunta con el rayo l\xE1ser blanco y presiona el <b><color=#000000>Trigger</color></b>.\n\n
     . <b><color=#000000>Con Hand Tracking</color></b>:\n\n1. Apunta con el dedo \xEDndice
     extendido.\n2. Un punto blanco aparecer\xE1 donde se\xF1ales.\n3. Junta \xEDndice
     y pulgar para hacer clic.\n4. Puedes usar ambas manos a la vez para interactuar

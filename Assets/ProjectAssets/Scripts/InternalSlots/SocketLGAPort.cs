@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class SocketLGAPort : InternalSlot
 {
     [Header("Socket Configuration")]
-    [SerializeField] private Animator socketAnimator;
+    [SerializeField] private Animator[] openAnimators; // Arreglo de animators para abrir
+    [SerializeField] private Animator[] closeAnimators; // Arreglo de animators para cerrar
 
     [Header("Socket Events")]
     public UnityEvent OnSocketOpened;
@@ -39,7 +41,7 @@ public class SocketLGAPort : InternalSlot
         if (componentInstalled == false)
         {
             OpenSocket();
-        }    
+        }
     }
 
     private void OpenSocket()
@@ -47,8 +49,21 @@ public class SocketLGAPort : InternalSlot
         if (!isSocketOpen)
         {
             isSocketOpen = true;
-            PlayAnimation("OnOpenSocket", true);
+            StartCoroutine(PlayOpenAnimations());
             OnSocketOpened?.Invoke();
+        }
+    }
+
+    private IEnumerator PlayOpenAnimations()
+    {
+        for (int i = 0; i < openAnimators.Length; ++i)
+        {
+            Animator animator = openAnimators[i];
+            if (animator != null)
+            {
+                animator.SetBool("OnOpenSocket", true);
+                yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // Esperar a que termine la animación
+            }
         }
     }
 
@@ -91,15 +106,20 @@ public class SocketLGAPort : InternalSlot
     private void CloseSocket()
     {
         isSocketOpen = false;
-        PlayAnimation("OnClosedSocket",true);
+        StartCoroutine(PlayCloseAnimations());
         OnSocketClosed?.Invoke();
     }
 
-    private void PlayAnimation(string animationName, bool state)
+    private IEnumerator PlayCloseAnimations()
     {
-        if (socketAnimator != null)
+        for (int i = 0; i < closeAnimators.Length; ++i)
         {
-            socketAnimator.SetBool(animationName, state);
+            Animator animator = closeAnimators[i];
+            if (animator != null)
+            {
+                animator.SetBool("OnClosedSocket", true);
+                yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // Esperar a que termine la animación
+            }
         }
     }
 
