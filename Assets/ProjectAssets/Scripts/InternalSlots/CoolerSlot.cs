@@ -7,7 +7,7 @@ public class CoolerSlot : InternalSlot
     [SerializeField] private SocketLGAPort _cpuSocket;
 
     private ThermalPaste _cpuThermalPaste;
-    private bool _hasEnoughPaste = false;
+    [SerializeField] private bool _hasEnoughPaste = false;
 
     private void OnEnable()
     {

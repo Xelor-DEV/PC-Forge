@@ -6,6 +6,7 @@ public class TutorialSceneController : MonoBehaviour
     [SerializeField, Tooltip("The name of the scene to be placed in this variable is that of the main menu.")] private string sceneName = "MenuPrincipal";
     [Header("References")]
     [SerializeField] private SceneLoader sceneLoader;
+    [SerializeField] private int sceneUnlocked; 
 
     void Start()
     {
@@ -14,9 +15,12 @@ public class TutorialSceneController : MonoBehaviour
 
     private void CheckTutorialCompletion()
     {
-        if (SaveManager.Instance.UnlockSystem.IsLevelUnlocked(2) == true)
+        bool isManual = SceneLoader.isManualTutorialLoad;
+        SceneLoader.isManualTutorialLoad = false; // Resetear inmediatamente después de verificar
+
+        if (SaveManager.Instance.UnlockSystem.IsLevelUnlocked(sceneUnlocked) && isManual == false)
         {
-            sceneLoader.LoadScene(sceneName);
+            sceneLoader.LoadSceneWithoutFade(sceneName);
         }
     }
 }

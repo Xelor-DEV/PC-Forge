@@ -11,6 +11,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private float blackScreenDuration = 0.5f; 
 
     private static bool shouldFadeIn = false;
+    public static bool isManualTutorialLoad = false;
 
     private void Awake()
     {
@@ -26,9 +27,20 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    public void LoadTutorialManually(string sceneName)
+    {
+        isManualTutorialLoad = true;
+        LoadScene(sceneName);
+    }
+
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneWithFade(sceneName));
+    }
+
+    public void LoadSceneWithoutFade(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     private IEnumerator LoadSceneWithFade(string sceneName)
