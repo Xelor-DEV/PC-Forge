@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 466865991}
-  m_IndirectSpecularColor: {r: 0.11867006, g: 0.18316743, b: 0.32951242, a: 1}
+  m_IndirectSpecularColor: {r: 0.11884108, g: 0.18339348, b: 0.32976314, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4587,7 +4587,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: c426f03710462fd429537259e9c54973,
+      objectReference: {fileID: 32900000, guid: d59413fdefcbe46419d31ffac3bfe24a,
         type: 3}
     - target: {fileID: 2612454141592688098, guid: 9d7da498bb3d46741b527fb2d276cee2,
         type: 3}
@@ -6944,7 +6944,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: b5583db4da6fd7a4ca236f7fd1084c5d,
+      objectReference: {fileID: 32900000, guid: d1b1da940650b1b429a61f55fef67a04,
         type: 3}
     - target: {fileID: 2612454141592688098, guid: 9d7da498bb3d46741b527fb2d276cee2,
         type: 3}
