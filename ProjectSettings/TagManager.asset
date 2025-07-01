@@ -6,6 +6,22 @@ TagManager:
   tags:
   - GPULarge
   - GPUSmall
+  - RAMSmall
+  - RAMLarge
+  - CPUSmall
+  - CPULarge
+  - ThermalPaste
+  - Motherboard
+  - CoolerSmall
+  - CoolerLarge
+  - OldGPUSmall
+  - OldGPULarge
+  - OldRAMSmall
+  - OldRAMLarge
+  - OldCPUSmall
+  - OldCPULarge
+  - OldCoolerSmall
+  - OldCoolerLarge
   layers:
   - Default
   - TransparentFX
@@ -15,9 +31,9 @@ TagManager:
   - UI
   - AssemblyCollisions
   - test
-  - 
-  - 
-  - 
+  - CoolerCollisions
+  - Scene
+  - NoScene
   - 
   - 
   - 
