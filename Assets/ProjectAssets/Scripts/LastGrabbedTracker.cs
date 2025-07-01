@@ -2,9 +2,9 @@ using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
 using UnityEngine;
 
-public class LastGrabbedTracker : MonoBehaviour
+public class LastGrabbedTracker : NonPersistentSingleton<LastGrabbedTracker>
 {
-    public static LastGrabbedTracker Instance { get; private set; }
+    //public static LastGrabbedTracker Instance { get; private set; }
 
     [Header("Configuración")]
     [SerializeField] private string _motherboardTag = "Motherboard";
@@ -22,7 +22,7 @@ public class LastGrabbedTracker : MonoBehaviour
         }
         else
         {
-            Instance = this;
+            //Instance = this;
         }
     }
 
@@ -35,6 +35,34 @@ public class LastGrabbedTracker : MonoBehaviour
         else if (grabbedObject.CompareTag(_coolerTag))
         {
             _lastCooler = grabbedObject;
+        }
+    }
+}
+public class NonPersistentSingleton<T> : MonoBehaviour where T : Component
+{
+    private static T _instance;
+
+    public static T Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                var objs = Object.FindObjectsByType(typeof(T), FindObjectsSortMode.None) as T[];
+                if (objs.Length > 0)
+                    _instance = objs[0];
+                if (objs.Length > 1)
+                {
+                    Debug.LogError("There is more than one " + typeof(T).Name + " in the scene.");
+                }
+                if (_instance == null)
+                {
+                    GameObject obj = new GameObject();
+                    obj.hideFlags = HideFlags.HideAndDontSave;
+                    _instance = obj.AddComponent<T>();
+                }
+            }
+            return _instance;
         }
     }
 }

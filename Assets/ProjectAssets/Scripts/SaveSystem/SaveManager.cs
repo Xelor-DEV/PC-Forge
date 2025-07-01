@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager : NonPersistentSingleton<SaveManager>
 {
-    public static SaveManager Instance { get; private set; }
+    //public static SaveManager Instance { get; private set; }
 
     [SerializeField] private LevelUnlockSystem unlockSystem;
     private LevelProgress _currentProgress;
@@ -22,8 +22,8 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
-            Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            //Instance = this;
+            ////DontDestroyOnLoad(gameObject);
             LoadGame();
         }
     }
