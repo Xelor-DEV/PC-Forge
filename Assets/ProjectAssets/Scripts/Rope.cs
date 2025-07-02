@@ -11,14 +11,14 @@ public class RopeController : MonoBehaviour
     public Grabbable endGrabbable;
     public LayerMask collisionLayers;
 
-    [Header("Configuración de la Soga")]
+    [Header("Configuraciï¿½n de la Soga")]
     public int segmentCount = 10;
     public float segmentRadius = 0.1f;
     public float maxLength = 5f;
     public float cooldownTime = 2f;
     public float ropeWidth = 0.05f;
 
-    [Header("Física")]
+    [Header("Fï¿½sica")]
     public float springForce = 100f;
     public float damper = 5f;
     public float massPerSegment = 0.1f;
@@ -58,8 +58,8 @@ public class RopeController : MonoBehaviour
 
             Rigidbody rb = segment.AddComponent<Rigidbody>();
             rb.mass = massPerSegment;
-            rb.drag = 0.5f;
-            rb.angularDrag = 0.5f;
+            rb.linearDamping = 0.5f;
+            rb.angularDamping = 0.5f;
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
             SphereCollider collider = segment.AddComponent<SphereCollider>();
